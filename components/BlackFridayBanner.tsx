@@ -9,13 +9,13 @@ async function BlackFridayBanner() {
     }
 
     return (
-        <div className="bg-gradient-to-r from-green-600 to black text-white px-6 py-10 mx-4 mt-2 rounded-lg shadow-lg">
+        <div className="bg-green-200 text-black px-6 py-10 mx-4 mt-2 rounded-lg shadow-lg">
             <div className="conatiner mx-auto flex items-center justify-between">
                 <div className="flex-1">
                     <h2 className="text-3xl sm:text-5xl font-extrabold text-left mb-4">
                         {sale.title}
                     </h2>
-                    <p className="text-left text-xl sm:text-3xl font-semibold mb-6">
+                    <p className="text-left text-l sm:text-xl font-semibold mb-6">
                         {sale.description}
                     </p>
                     <div className="flex">

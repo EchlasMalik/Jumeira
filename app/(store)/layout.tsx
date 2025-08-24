@@ -9,8 +9,8 @@ import { draftMode } from "next/headers";
 import { DisableDraftMode } from "@/components/DisableDraftMode";
 
 export const metadata: Metadata = {
-  title: "Ecommerce App",
-  description: "Ecommerce App Template",
+  title: "Falcon - Premium Software",
+  description: "Falcon Aiming",
 };
 
 export default async function RootLayout({
@@ -21,6 +21,9 @@ export default async function RootLayout({
   return (
     <ClerkProvider dynamic>
     <html lang="en">
+      <head>
+        <link rel="icon" type="image/png" href="./ui/falcon-logo.png" />
+      </head>
       <body >
         {(await draftMode()).isEnabled && (
           <>

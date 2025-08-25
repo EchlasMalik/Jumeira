@@ -128,12 +128,12 @@ function BasketPage() {
                     <button
                         onClick={handleCheckout}
                         disabled ={isLoading}
-                        className="mt-4 w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 disabled:bg-gray-400">
+                        className="mt-4 w-full bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 disabled:bg-gray-400">
                             {isLoading ? "Processing..." : "Checkout"}
                         </button>
                     ) : (
                         <SignInButton mode="modal">
-                            <button className="mt-4 w-full bg-blue-580 text-white px-4 py-2 rounded hover:bg-blue-600">
+                            <button className="mt-4 w-full bg-blue-580 text-white px-4 py-2 rounded hover:bg-yellow-600">
                                 Sign in to Checkout
                             </button>
                         </SignInButton>

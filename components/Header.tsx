@@ -20,7 +20,7 @@ import {
 } from "@sanity/icons";
 import { MenuIcon, XIcon } from "lucide-react";
 import useBasketStore from "@/store/store";
-import FalconLogo from "./ui/falcon-logo.png";
+import JumeiraLogo from "./ui/jumeira.png";
 
 function Header() {
   const { user } = useUser();
@@ -39,10 +39,10 @@ function Header() {
           className="text-2xl font-bold text-green-500 hover:opacity-50 cursor-pointer"
         >
           <Image
-            src={FalconLogo}
+            src={JumeiraLogo}
             alt="Falcon Logo"
-            width={70}
-            height={20}
+            width={200}
+            height={50}
             className="hover:opacity-70 transition"
           />
         </Link>
@@ -51,21 +51,21 @@ function Header() {
         <nav className="hidden sm:flex gap-9 text-[20px] flex-1 justify-center">
           <Link
             href="/"
-            className="px-3 py-2 rounded-md text-gray-700 hover:text-green-500 hover:bg-green-50 flex items-center gap-2"
+            className="px-3 py-2 rounded-md text-gray-700 hover:text-yellow-500 hover:bg-yellow-50 flex items-center gap-2"
           >
             <HomeIcon className="w-6 h-6" />
             Home
           </Link>
           <Link
             href="#"
-            className="px-3 py-2 rounded-md text-gray-700 hover:text-green-500 hover:bg-green-50 flex items-center gap-2"
+            className="px-3 py-2 rounded-md text-gray-700 hover:text-yellow-500 hover:bg-yellow-50 flex items-center gap-2"
           >
             <CheckmarkCircleIcon className="w-6 h-6" />
             Reviews
           </Link>
           <Link
             href="/terms-of-service"
-            className="px-3 py-2 rounded-md text-gray-700 hover:text-green-500 hover:bg-green-50 flex items-center gap-2"
+            className="px-3 py-2 rounded-md text-gray-700 hover:text-yellow-500 hover:bg-yellow-50 flex items-center gap-2"
           >
             <PinIcon className="w-6 h-6" />
             Terms Of Service
@@ -122,12 +122,12 @@ function Header() {
               ) : (
                 <div className="flex space-x-2">
                   <SignInButton mode="modal">
-                    <button className="px-4 py-2 bg-green-600 text-white font-semibold rounded hover:bg-green-700 transition">
+                    <button className="px-4 py-2 bg-yellow-500 text-white font-semibold rounded hover:bg-yellow-600 transition">
                       Existing user? Sign In
                     </button>
                   </SignInButton>
                   <SignUpButton mode="modal">
-                    <button className="px-4 py-2 bg-green-600 text-white font-semibold rounded hover:bg-green-600 transition">
+                    <button className="px-4 py-2 bg-yellow-500 text-white font-semibold rounded hover:bg-yellow-600 transition">
                       Sign Up
                     </button>
                   </SignUpButton>

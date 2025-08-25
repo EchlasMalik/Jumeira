@@ -54,13 +54,6 @@ export const productType = defineType({
             type: "number",
             validation: (Rule) => Rule.required().min(0),
         }),
-        defineField({
-            name: "serialKeys",
-            title: "Serial Keys",
-            type: "array",
-            of: [{ type: "string" }],
-            description: "Add unique codes that will be sent to the customer upon purchase",
-        }),
     ],
     preview: {
         select: {

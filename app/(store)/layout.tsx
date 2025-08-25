@@ -9,8 +9,8 @@ import { draftMode } from "next/headers";
 import { DisableDraftMode } from "@/components/DisableDraftMode";
 
 export const metadata: Metadata = {
-  title: "Falcon - Premium Software",
-  description: "Falcon Aiming",
+  title: "Jumeira Group",
+  description: "Jumeira - Indian Restaurant",
 };
 
 export default async function RootLayout({
@@ -22,7 +22,7 @@ export default async function RootLayout({
     <ClerkProvider dynamic>
     <html lang="en">
       <head>
-        <link rel="icon" type="image/png" href="./ui/falcon-logo.png" />
+        <link rel="icon" type="image/png" href="./ui/jumeira.png" />
       </head>
       <body >
         {(await draftMode()).isEnabled && (

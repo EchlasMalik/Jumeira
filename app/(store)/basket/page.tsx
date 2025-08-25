@@ -9,6 +9,7 @@ import Image from "next/image";
 import { imageUrl } from "@/lib/imageUrl";
 import Loader from "@/components/Loader";
 import { createCheckoutSession, Metadata } from "@/actions/createCheckoutSession";
+import DeliveryCalculator from "@/components/DeliveryCalculator";
 
 
 function BasketPage() {
@@ -19,6 +20,8 @@ function BasketPage() {
 
     const [isClient, setIsClient] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [deliveryFee, setDeliveryFee] = useState<number | null>(null);
+
 
     // wait for client to mount
     useEffect(() => {
@@ -107,41 +110,78 @@ function BasketPage() {
                 ))}
             </div>
 
-            <div className="w-full lg:w-80 lg:sticky lg:top-4 h-fit bg-white p-6 border rounded order-first lg:order-last fixed bottom-0 left-0 lg:left-auto">
-                <h3 className="text-xl font-semibold">Order Summary</h3>
-                <div className="mt-4 space-y-2">
-                    <p className="flex justify-between">
-                        <span>Items:</span>
-                        <span>
-                            {groupedItems.reduce((total, item) => total + item.quantity, 0)}
-                        </span>
-                    </p>
-                    <p className="flex justify-between text-2xl font-bold border-t pt-2">
-                        <span>Total: </span>
-                        <span>
-                            £{useBasketStore.getState().getTotalPrice().toFixed(2)}
-                        </span>
-                    </p>
+
+            {/* Parent container */}
+            <div className="lg:w-80 lg:order-last flex flex-col gap-4
+                            fixed bottom-0 left-0 w-full max-h-[80vh] overflow-y-auto p-4
+                            lg:static lg:max-h-full lg:top-4 lg:p-0">
+
+            {/* Subtotal + Total + Checkout */}
+            <div className="bg-white p-4 sm:p-6 border rounded-lg shadow-md">
+                <h3 className="text-2xl font-semibold border-b pb-2">Order Summary</h3>
+
+                <div className="mt-4 space-y-3 sm:space-y-4">
+                {/* Items Count */}
+                <div className="flex justify-between text-gray-700 text-sm sm:text-base">
+                    <span>Items:</span>
+                    <span className="font-medium">
+                    {groupedItems.reduce((total, item) => total + item.quantity, 0)}
+                    </span>
                 </div>
 
+                {/* Subtotal + Total */}
+                <div className="flex justify-between items-center border-t pt-2 text-base sm:text-lg font-semibold text-gray-900">
+                <span>Subtotal:</span>
+                <span>£{useBasketStore.getState().getTotalPrice().toFixed(2)}</span>
+                </div>
+
+                {deliveryFee !== null && (
+                <div className="flex justify-between text-gray-700 text-sm sm:text-base">
+                    <span>Delivery:</span>
+                    <span>£{deliveryFee.toFixed(2)}</span>
+                </div>
+                )}
+
+                <div className="flex justify-between items-center border-t pt-3 text-xl sm:text-2xl font-bold text-gray-900">
+                <span>Total:</span>
+                <span>
+                    £{(
+                    useBasketStore.getState().getTotalPrice() +
+                    (deliveryFee ?? 0)
+                    ).toFixed(2)}
+                </span>
+                </div>
+                </div>
+
+                {/* Checkout Button */}
+                <div className="mt-4 sm:mt-6">
                 {isSignedIn ? (
                     <button
-                        onClick={handleCheckout}
-                        disabled ={isLoading}
-                        className="mt-4 w-full bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 disabled:bg-gray-400">
-                            {isLoading ? "Processing..." : "Checkout"}
-                        </button>
-                    ) : (
-                        <SignInButton mode="modal">
-                            <button className="mt-4 w-full bg-blue-580 text-white px-4 py-2 rounded hover:bg-yellow-600">
-                                Sign in to Checkout
-                            </button>
-                        </SignInButton>
-                    )}
+                    onClick={handleCheckout}
+                    disabled={isLoading}
+                    className="w-full bg-yellow-500 text-white py-3 rounded-lg hover:bg-yellow-600 disabled:bg-gray-400 transition-colors duration-200"
+                    >
+                    {isLoading ? "Processing..." : "Checkout"}
+                    </button>
+                ) : (
+                    <SignInButton mode="modal">
+                    <button className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200">
+                        Sign in to Checkout
+                    </button>
+                    </SignInButton>
+                )}
+                </div>
             </div>
 
-            
-            
+            {/* Delivery Calculator */}
+            <div className="bg-white p-4 sm:p-6 border rounded-lg shadow-md">
+                <DeliveryCalculator onFeeChange={setDeliveryFee}/>
+            </div>
+
+            {/* Extra padding at bottom for mobile so button isn’t cut off */}
+            <div className="h-4 lg:hidden"></div>
+            </div>
+
 
             <div className="h-64 lg:h-0">
                 {/* Spacer for fixed checkout on mobile */}

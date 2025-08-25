@@ -24,10 +24,13 @@ const query = groq`
 export default async function CategoryPage({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
+  const { slug } = await params
+
   const category: (Category & { products: Product[] }) | null =
-    await client.fetch(query, { slug: params.slug })
+    await client.fetch(query, { slug })
+
 
   if (!category) {
     return <div className="p-6 text-center">Category not found</div>

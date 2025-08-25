@@ -129,6 +129,7 @@ export type Product = {
     [internalGroqTypeReferenceTo]?: "category";
   }>;
   stock?: number;
+  serialKeys?: Array<string>;
 };
 
 export type BlockContent = Array<{
@@ -360,6 +361,7 @@ export type MY_ORDERS_QUERYResult = Array<{
         [internalGroqTypeReferenceTo]?: "category";
       }>;
       stock?: number;
+      serialKeys?: Array<string>;
     } | null;
     quantity?: number;
     _key: string;
@@ -448,6 +450,7 @@ export type ALL_PRODUCTS_QUERYResult = Array<{
     [internalGroqTypeReferenceTo]?: "category";
   }>;
   stock?: number;
+  serialKeys?: Array<string>;
 }>;
 
 // Source: ./sanity/lib/products/getProductBySlug.ts
@@ -513,6 +516,7 @@ export type PRODUCT_BY_ID_QUERYResult = {
     [internalGroqTypeReferenceTo]?: "category";
   }>;
   stock?: number;
+  serialKeys?: Array<string>;
 } | null;
 
 // Source: ./sanity/lib/products/getProductsByCategory.ts
@@ -578,6 +582,7 @@ export type PRODUCTS_BY_CATEGORY_QUERYResult = Array<{
     [internalGroqTypeReferenceTo]?: "category";
   }>;
   stock?: number;
+  serialKeys?: Array<string>;
 }>;
 
 // Source: ./sanity/lib/products/searchProductsByName.ts
@@ -643,6 +648,7 @@ export type PRODUCT_SEARCH_QUERYResult = Array<{
     [internalGroqTypeReferenceTo]?: "category";
   }>;
   stock?: number;
+  serialKeys?: Array<string>;
 }>;
 
 // Source: ./sanity/lib/sales/getActiveSaleByCouponCode.ts

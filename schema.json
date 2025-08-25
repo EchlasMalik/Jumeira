@@ -778,6 +778,16 @@
           "type": "number"
         },
         "optional": true
+      },
+      "serialKeys": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "array",
+          "of": {
+            "type": "string"
+          }
+        },
+        "optional": true
       }
     }
   },

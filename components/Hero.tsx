@@ -5,7 +5,7 @@ import { SearchIcon } from "lucide-react";
 
 async function Hero() {
   return (
-    <section className="relative flex flex-col md:flex-row items-center px-6 py-24 bg-gradient-to-r from-green-500 via-green-200 to-white gap-12">
+    <section className="relative flex flex-col md:flex-row items-center px-6 py-24 bg-gradient-to-l from-green-500 via-green-200 to-white gap-12">
       
       {/* Left Side: Text + Form */}
       <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left space-y-6">
@@ -39,9 +39,9 @@ async function Hero() {
           </Button>
           <Button
             variant="outline"
-            className="border-green-600 text-gray-600 hover:bg-gray-600 hover:text-white shadow-sm px-6 py-3"
+            className="border-gray-600 text-gray-600 hover:bg-gray-600 hover:text-white shadow-sm px-6 py-3"
           >
-            Installation Guides
+            Discord
           </Button>
         </div>
 
